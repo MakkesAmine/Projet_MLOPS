@@ -3,7 +3,7 @@
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -20,8 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install pandas numpy scikit-learn joblib mlflow scipy
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
 
     - name: Run model script
       run: |
