@@ -10,3 +10,5 @@ pytest
 flask
 gunicorn
 jupyter
+joblib
+scipy

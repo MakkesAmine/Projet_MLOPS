@@ -1,9 +1,9 @@
-  name: CI Pipeline
+name: CI Pipeline
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -20,16 +20,43 @@ jobs:
 
     - name: Install dependencies
       run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
+        python -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Run model script
+    - name: Prepare data
       run: |
-        python src/main.py
+        source venv/bin/activate
+        python src/main.py --prepare --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
-    - name: Archive results
+    - name: Train model
+      run: |
+        source venv/bin/activate
+        python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
+
+    - name: Evaluate model
+      run: |
+        source venv/bin/activate
+        python src/main.py --evaluate --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv --save models/best_model.pkl
+
+    - name: Save model
+      run: |
+        source venv/bin/activate
+        python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
+
+    - name: Archive model
       uses: actions/upload-artifact@v2
       with:
         name: model-artifacts
         path: models/best_model.pkl
+
+    - name: Start FastAPI
+      run: |
+        source venv/bin/activate
+        nohup uvicorn app:app --reload --host 0.0.0.0 --port 8000 &
+
+    - name: Start MLflow UI
+      run: |
+        source venv/bin/activate
+        nohup mlflow ui --host 0.0.0.0 --port 5000 &
