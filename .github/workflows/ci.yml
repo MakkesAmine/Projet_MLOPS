@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -30,20 +30,16 @@ jobs:
         source venv/bin/activate
         python src/main.py --prepare --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
-    - name: Train model
+    - name: Train and Save model
       run: |
         source venv/bin/activate
         python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
+        python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
     - name: Evaluate model
       run: |
         source venv/bin/activate
         python src/main.py --evaluate --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv --save models/best_model.pkl
-
-    - name: Save model
-      run: |
-        source venv/bin/activate
-        python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
     - name: Archive model
       uses: actions/upload-artifact@v4
