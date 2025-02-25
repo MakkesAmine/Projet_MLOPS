@@ -1,6 +1,8 @@
 import argparse
 import os
 import model as ml_model
+import mlflow
+import mlflow.sklearn
 
 def main():
     parser = argparse.ArgumentParser(description="ML Project Pipeline")
@@ -18,9 +20,12 @@ def main():
         print("Data prepared successfully.")
 
     if args.train:
+        mlflow.start_run()  # Start a new MLflow run
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
         model = ml_model.train_model(X_train, y_train)
         best_model = ml_model.optimize_hyperparameters(X_train, y_train)
+        mlflow.sklearn.log_model(best_model, "model")  # Log the model
+        mlflow.end_run()  # End the MLflow run
         print("Model trained and hyperparameters optimized successfully.")
 
     if args.evaluate:
