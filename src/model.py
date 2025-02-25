@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split, GridSearchCV
@@ -102,4 +101,3 @@ def save_model(model, filename):
 
 def load_model(filename):
     return joblib.load(filename)
-
