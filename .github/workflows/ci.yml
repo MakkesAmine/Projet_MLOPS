@@ -34,6 +34,8 @@ jobs:
       run: |
         source venv/bin/activate
         mkdir -p models  # Create the models directory if it doesn't exist
+        mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 5000 &
+        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
         python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
@@ -65,8 +67,3 @@ jobs:
       run: |
         source venv/bin/activate
         nohup uvicorn src.app:app --reload --host 0.0.0.0 --port 8000 &
-
-    - name: Start MLflow UI
-      run: |
-        source venv/bin/activate
-        nohup mlflow ui --host 0.0.0.0 --port 5000 &
