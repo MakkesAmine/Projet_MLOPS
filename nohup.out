@@ -902,3 +902,283 @@ Traceback (most recent call last):
 SystemExit: 1
 [2025-02-25 03:43:39 +0100] [6025] [INFO] Worker exiting (pid: 6025)
 [2025-02-25 03:43:39 +0100] [6458] [INFO] Booting worker with pid: 6458
+[2025-02-25 04:07:36 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:6024)
+[2025-02-25 04:07:36 +0100] [6024] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:07:37 +0100] [6024] [INFO] Worker exiting (pid: 6024)
+[2025-02-25 04:07:37 +0100] [7729] [INFO] Booting worker with pid: 7729
+[2025-02-25 04:08:17 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:5936)
+[2025-02-25 04:08:17 +0100] [5936] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:08:17 +0100] [5936] [INFO] Worker exiting (pid: 5936)
+[2025-02-25 04:08:17 +0100] [7801] [INFO] Booting worker with pid: 7801
+[2025-02-25 04:10:27 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:7729)
+[2025-02-25 04:10:27 +0100] [7729] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:10:27 +0100] [7729] [INFO] Worker exiting (pid: 7729)
+[2025-02-25 04:10:27 +0100] [7855] [INFO] Booting worker with pid: 7855
+[2025-02-25 04:14:15 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:7855)
+[2025-02-25 04:14:15 +0100] [7855] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:14:15 +0100] [7855] [INFO] Worker exiting (pid: 7855)
+[2025-02-25 04:14:15 +0100] [7950] [INFO] Booting worker with pid: 7950
+[2025-02-25 04:15:16 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:6458)
+[2025-02-25 04:15:16 +0100] [6458] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:15:16 +0100] [6458] [INFO] Worker exiting (pid: 6458)
+[2025-02-25 04:15:16 +0100] [7995] [INFO] Booting worker with pid: 7995
+[2025-02-25 04:16:16 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:7950)
+[2025-02-25 04:16:16 +0100] [7950] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:16:16 +0100] [7950] [INFO] Worker exiting (pid: 7950)
+[2025-02-25 04:16:16 +0100] [8212] [INFO] Booting worker with pid: 8212
+[2025-02-25 04:16:33 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:2807)
+[2025-02-25 04:16:33 +0100] [2807] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 04:16:33 +0100] [2807] [INFO] Worker exiting (pid: 2807)
+[2025-02-25 04:16:34 +0100] [8316] [INFO] Booting worker with pid: 8316
+[2025-02-25 04:17:08 +0100] [1894] [INFO] Handling signal: hup
+[2025-02-25 04:17:08 +0100] [1894] [INFO] Hang up: Master
+[2025-02-25 04:17:08 +0100] [1894] [ERROR] Worker (pid:7801) was sent SIGHUP!
+[2025-02-25 04:17:08 +0100] [8362] [INFO] Booting worker with pid: 8362
+[2025-02-25 04:17:08 +0100] [8363] [INFO] Booting worker with pid: 8363
+[2025-02-25 04:17:08 +0100] [1894] [ERROR] Worker (pid:7995) was sent SIGHUP!
+--- Logging error ---
+[2025-02-25 04:17:08 +0100] [8364] [INFO] Booting worker with pid: 8364
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+RuntimeError: reentrant call inside <_io.BufferedWriter name='<stderr>'>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/logging/__init__.py", line 1163, in emit
+    stream.write(msg + self.terminator)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 553, in reap_workers
+    self.log.error(msg)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/glogging.py", line 271, in error
+    self.error_log.error(msg, *args, **kwargs)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1568, in error
+    self._log(ERROR, msg, args, **kwargs)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1684, in _log
+    self.handle(record)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1700, in handle
+    self.callHandlers(record)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1762, in callHandlers
+    hdlr.handle(record)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1028, in handle
+    self.emit(record)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1168, in emit
+    self.handleError(record)
+  File "/usr/lib/python3.12/logging/__init__.py", line 1081, in handleError
+    sys.stderr.write('--- Logging error ---\n')
+RuntimeError: reentrant call inside <_io.BufferedWriter name='<stderr>'>
+Call stack:
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/__main__.py", line 10, in <module>
+    run(prog="gunicorn")
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+    WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 235, in run
+    super().run()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 71, in run
+    Arbiter(self).run()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 223, in run
+    handler()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 252, in handle_hup
+    self.reload()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 483, in reload
+    self.spawn_worker()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 592, in spawn_worker
+    pid = os.fork()
+  File "/usr/lib/python3.12/logging/__init__.py", line 243, in _releaseLock
+    def _releaseLock():
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+    self.reap_workers()
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 553, in reap_workers
+    self.log.error(msg)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/glogging.py", line 271, in error
+    self.error_log.error(msg, *args, **kwargs)
+Message: 'Worker (pid:7995) was sent SIGHUP!'
+Arguments: ()
+[2025-02-25 04:17:08 +0100] [1894] [ERROR] Worker (pid:8316) was sent SIGHUP!
+[2025-02-25 04:17:08 +0100] [8365] [INFO] Booting worker with pid: 8365

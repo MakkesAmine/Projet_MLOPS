@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1740452858606
+current_stage: Staging
+description: ''
+last_updated_timestamp: 1740452858610
+name: ChurnPredictionModel
+run_id: 64b0aa124cbc45e594246d2ff46fcd0e
+run_link: ''
+source: mlflow-artifacts:/851546332901561652/64b0aa124cbc45e594246d2ff46fcd0e/artifacts/model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/851546332901561652/64b0aa124cbc45e594246d2ff46fcd0e/artifacts/model
+user_id: null
+version: 3

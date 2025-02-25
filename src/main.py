@@ -62,7 +62,7 @@ def main():
             client.transition_model_version_stage(
                 name="ChurnPredictionModel",
                 version=registered_model.version,
-                stage="Staging"
+                stage="None"
             )
 
             # Log metrics to TensorBoard
