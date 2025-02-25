@@ -1,8 +1,13 @@
 import argparse
 import os
 import model as ml_model
+import tensorflow as tf
 import mlflow
 import mlflow.sklearn
+from mlflow.models.signature import infer_signature
+from datetime import datetime
+import subprocess
+from pyngrok import ngrok
 
 def main():
     parser = argparse.ArgumentParser(description="ML Project Pipeline")
@@ -15,18 +20,68 @@ def main():
     
     args = parser.parse_args()
 
+    # Configure TensorBoard logging
+    log_dir = "logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+    file_writer = tf.summary.create_file_writer(log_dir)
+
+    # Configure MLflow
+    tracking_uri = "https://542d-34-169-164-1.ngrok-free.app"
+    mlflow.set_tracking_uri(tracking_uri)
+    mlflow.set_experiment("churn prediction")
+
     if args.prepare:
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
         print("Data prepared successfully.")
 
     if args.train:
-        mlflow.start_run()  # Start a new MLflow run
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
         model = ml_model.train_model(X_train, y_train)
         best_model = ml_model.optimize_hyperparameters(X_train, y_train)
-        mlflow.sklearn.log_model(best_model, "model")  # Log the model
-        mlflow.end_run()  # End the MLflow run
-        print("Model trained and hyperparameters optimized successfully.")
+        
+        # Start MLflow run
+        with mlflow.start_run():
+            # Log parameters and metrics to MLflow
+            mlflow.log_param("n_estimators", best_model.get_params()['n_estimators'])
+            mlflow.log_param("max_depth", best_model.get_params()['max_depth'])
+            mlflow.log_param("min_samples_split", best_model.get_params()['min_samples_split'])
+            mlflow.log_param("min_samples_leaf", best_model.get_params()['min_samples_leaf'])
+
+            accuracy, precision, recall, f1 = ml_model.evaluate_model(best_model, X_test, y_test)
+            mlflow.log_metric("accuracy", accuracy)
+            mlflow.log_metric("precision", precision)
+            mlflow.log_metric("recall", recall)
+            mlflow.log_metric("f1_score", f1)
+            
+            # Log model with signature
+            signature = infer_signature(X_train, best_model.predict(X_train))
+            mlflow.sklearn.log_model(best_model, "model", signature=signature)
+
+            # Register the model
+            model_uri = "runs:/{}/model".format(mlflow.active_run().info.run_id)
+            registered_model = mlflow.register_model(model_uri, "ChurnPredictionModel")
+            
+            # Transition model to staging
+            client = mlflow.tracking.MlflowClient()
+            client.transition_model_version_stage(
+                name="ChurnPredictionModel",
+                version=registered_model.version,
+                stage="Staging"
+            )
+
+            # Log metrics to TensorBoard
+            with file_writer.as_default():
+                tf.summary.scalar('accuracy', accuracy, step=1)
+                tf.summary.scalar('precision', precision, step=1)
+                tf.summary.scalar('recall', recall, step=1)
+                tf.summary.scalar('f1_score', f1, step=1)
+        
+        # Save the model with versioning
+        model_version_dir = "models/version_" + datetime.now().strftime("%Y%m%d-%H%M%S")
+        os.makedirs(model_version_dir, exist_ok=True)
+        model_path = os.path.join(model_version_dir, "best_model.pkl")
+        ml_model.save_model(best_model, model_path)
+        
+        print(f"Model trained and hyperparameters optimized successfully. Model saved to {model_path}")
 
     if args.evaluate:
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
