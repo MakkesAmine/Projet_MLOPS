@@ -6,8 +6,6 @@ import mlflow
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
 from datetime import datetime
-import subprocess
-from pyngrok import ngrok
 
 def main():
     parser = argparse.ArgumentParser(description="ML Project Pipeline")
@@ -54,7 +52,9 @@ def main():
             
             # Log model with signature
             signature = infer_signature(X_train, best_model.predict(X_train))
-            mlflow.sklearn.log_model(best_model, "model", signature=signature)
+            artifact_path = os.path.join("artifacts", "model")
+            os.makedirs(artifact_path, exist_ok=True)  # Ensure the directory exists
+            mlflow.sklearn.log_model(best_model, artifact_path, signature=signature)
 
             # Register the model
             model_uri = "runs:/{}/model".format(mlflow.active_run().info.run_id)
@@ -76,7 +76,7 @@ def main():
                 tf.summary.scalar('f1_score', f1, step=1)
         
         # Save the model with versioning
-        model_version_dir = "models/version_" + datetime.now().strftime("%Y%m%d-%H%M%S")
+        model_version_dir = os.path.join("models", "version_" + datetime.now().strftime("%Y%m%d-%H%M%S"))
         os.makedirs(model_version_dir, exist_ok=True)
         model_path = os.path.join(model_version_dir, "best_model.pkl")
         ml_model.save_model(best_model, model_path)
