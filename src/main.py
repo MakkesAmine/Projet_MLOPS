@@ -101,7 +101,7 @@ def main():
 if __name__ == "__main__":
     # Configure ngrok token
     ngrok_token = "2tXQFwu9JuRvmeQhGub6zhAEppJ_5WF3CfsZnpKTZVbS6tEEk"
-    subprocess.run(["ngrok", "authtoken", ngrok_token])
+    ngrok.set_auth_token(ngrok_token)
     
     # Start ngrok tunnel
     public_url = ngrok.connect(5000)
