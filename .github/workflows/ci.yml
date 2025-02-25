@@ -34,8 +34,6 @@ jobs:
       run: |
         source venv/bin/activate
         mkdir -p models  # Create the models directory if it doesn't exist
-        mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 5000 &
-        export MLFLOW_TRACKING_URI=http://localhost:5000
         python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
         python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
@@ -63,7 +61,7 @@ jobs:
         name: model-artifacts
         path: models/best_model.pkl
 
-    - name: Start FastAPI
+    - name: Start TensorBoard
       run: |
         source venv/bin/activate
-        nohup uvicorn src.app:app --reload --host 0.0.0.0 --port 8000 &
+        nohup tensorboard --logdir logs/fit --host 0.0.0.0 --port 6006 &
