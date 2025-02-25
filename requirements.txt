@@ -12,3 +12,4 @@ gunicorn
 jupyter
 joblib
 scipy
+uvicorn
