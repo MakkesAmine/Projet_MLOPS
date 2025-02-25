@@ -104,7 +104,7 @@ if __name__ == "__main__":
     ngrok.set_auth_token(ngrok_token)
     
     # Start ngrok tunnel
-    public_url = ngrok.connect(5000)
+    public_url = ngrok.connect(5101)
     print(f"MLflow Tracking UI: {public_url}")
     
     main()

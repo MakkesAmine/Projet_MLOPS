@@ -1,5 +1,0 @@
-authtoken: 2tXQFwu9JuRvmeQhGub6zhAEppJ_5WF3CfsZnpKTZVbS6tEEk
-tunnels:
-  mlflow:
-    addr: 5000
-    proto: http

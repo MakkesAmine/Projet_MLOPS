@@ -33,9 +33,9 @@ jobs:
     - name: Start MLflow and ngrok
       run: |
         source venv/bin/activate
-        nohup mlflow ui --host 0.0.0.0 --port 5000 &
+        nohup mlflow ui --host 0.0.0.0 --port 5101 &
         sleep 10  # Wait for MLflow to start
-        ngrok http 5000 --config ~/.ngrok2/ngrok.yml > /dev/null &
+        ngrok http 5101 --config ~/.ngrok2/ngrok.yml > /dev/null &
 
     - name: Prepare data
       run: |
