@@ -5,7 +5,6 @@ from sklearn.preprocessing import LabelEncoder, MinMaxScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 import joblib
-import tensorflow as tf
 from scipy.stats import zscore
 
 def normalize_data(data, columns_to_normalize):

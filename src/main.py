@@ -17,7 +17,7 @@ def main():
 
     # Configure TensorBoard logging
     log_dir = "logs/fit/" + datetime.now().strftime("%Y%m%d-%H%M%S")
-    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+    file_writer = tf.summary.create_file_writer(log_dir)
 
     if args.prepare:
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
@@ -27,8 +27,18 @@ def main():
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
         model = ml_model.train_model(X_train, y_train)
         best_model = ml_model.optimize_hyperparameters(X_train, y_train)
-        # Train the model with TensorBoard callback
-        best_model.fit(X_train, y_train, epochs=10, validation_data=(X_test, y_test), callbacks=[tensorboard_callback])
+        
+        # Log metrics to TensorBoard
+        with file_writer.as_default():
+            accuracy, precision, recall, f1 = ml_model.evaluate_model(best_model, X_test, y_test)
+            tf.summary.scalar('accuracy', accuracy, step=1)
+            tf.summary.scalar('precision', precision, step=1)
+            tf.summary.scalar('recall', recall, step=1)
+            tf.summary.scalar('f1_score', f1, step=1)
+        
+        # Save the model
+        ml_model.save_model(best_model, "models/best_model.pkl")
+        
         print("Model trained and hyperparameters optimized successfully.")
 
     if args.evaluate:

@@ -751,3 +751,33 @@ Traceback (most recent call last):
 SystemExit: 1
 [2025-02-25 02:34:10 +0100] [4003] [INFO] Worker exiting (pid: 4003)
 [2025-02-25 02:34:10 +0100] [4052] [INFO] Booting worker with pid: 4052
+[2025-02-25 02:41:15 +0100] [1894] [CRITICAL] WORKER TIMEOUT (pid:3424)
+[2025-02-25 02:41:15 +0100] [3424] [ERROR] Error handling request (no URI read)
+Traceback (most recent call last):
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/sync.py", line 133, in handle
+    req = next(parser)
+          ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/parser.py", line 41, in __next__
+    self.mesg = self.mesg_class(self.cfg, self.unreader, self.source_addr, self.req_count)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 259, in __init__
+    super().__init__(cfg, unreader, peer_addr)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 60, in __init__
+    unused = self.parse(self.unreader)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 271, in parse
+    self.get_data(unreader, buf, stop=True)
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/message.py", line 262, in get_data
+    data = unreader.read()
+           ^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 36, in read
+    d = self.chunk()
+        ^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/http/unreader.py", line 63, in chunk
+    return self.sock.recv(self.mxchunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/amine/ProjetMlops_AmineMakkes/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 204, in handle_abort
+    sys.exit(1)
+SystemExit: 1
+[2025-02-25 02:41:15 +0100] [3424] [INFO] Worker exiting (pid: 3424)
+[2025-02-25 02:41:15 +0100] [4303] [INFO] Booting worker with pid: 4303
