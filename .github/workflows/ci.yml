@@ -33,8 +33,22 @@ jobs:
     - name: Train and Save model
       run: |
         source venv/bin/activate
+        mkdir -p models  # Create the models directory if it doesn't exist
         python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
         python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
+
+    - name: Check model directory and file
+      run: |
+        if [ -d "models" ]; then
+          echo "models directory exists"
+        else
+          echo "models directory does not exist"
+        fi
+        if [ -f "models/best_model.pkl" ]; then
+          echo "models/best_model.pkl exists"
+        else
+          echo "models/best_model.pkl does not exist"
+        fi
 
     - name: Evaluate model
       run: |
@@ -50,7 +64,7 @@ jobs:
     - name: Start FastAPI
       run: |
         source venv/bin/activate
-        nohup uvicorn app:app --reload --host 0.0.0.0 --port 8000 &
+        nohup uvicorn src.app:app --reload --host 0.0.0.0 --port 8000 &
 
     - name: Start MLflow UI
       run: |
