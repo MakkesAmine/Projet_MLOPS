@@ -15,3 +15,4 @@ scipy
 uvicorn
 fastapi
 tensorboard
+pyngrok
