@@ -25,6 +25,18 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Set up ngrok
+      run: |
+        source venv/bin/activate
+        ngrok authtoken ${{ secrets.NGROK_AUTHTOKEN }}
+
+    - name: Start MLflow and ngrok
+      run: |
+        source venv/bin/activate
+        nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 5000 &
+        sleep 5  # Wait for MLflow to start
+        ngrok http 5000 > /dev/null &
+
     - name: Prepare data
       run: |
         source venv/bin/activate
@@ -34,7 +46,6 @@ jobs:
       run: |
         source venv/bin/activate
         mkdir -p models  # Create the models directory if it doesn't exist
-        export MLFLOW_TRACKING_URI=$MLFLOW_TRACKING_URI
         python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
         python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 

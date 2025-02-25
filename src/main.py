@@ -6,6 +6,8 @@ import mlflow
 import mlflow.sklearn
 from mlflow.models.signature import infer_signature
 from datetime import datetime
+import subprocess
+from pyngrok import ngrok
 
 def main():
     parser = argparse.ArgumentParser(description="ML Project Pipeline")
@@ -97,4 +99,12 @@ def main():
         print(f'Model saved to {args.save}')
 
 if __name__ == "__main__":
+    # Configure ngrok token
+    ngrok_token = "YOUR_NGROK_AUTHTOKEN"
+    subprocess.run(["ngrok", "authtoken", ngrok_token])
+    
+    # Start ngrok tunnel
+    public_url = ngrok.connect(5000)
+    print(f"MLflow Tracking UI: {public_url}")
+    
     main()
