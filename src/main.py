@@ -49,24 +49,6 @@ def main():
             mlflow.log_metric("precision", precision)
             mlflow.log_metric("recall", recall)
             mlflow.log_metric("f1_score", f1)
-            
-            # Log model with signature
-            signature = infer_signature(X_train, best_model.predict(X_train))
-            artifact_path = os.path.join("artifacts", "model")
-            os.makedirs(artifact_path, exist_ok=True)  # Ensure the directory exists
-            mlflow.sklearn.log_model(best_model, artifact_path, signature=signature)
-
-            # Register the model
-            model_uri = "runs:/{}/model".format(mlflow.active_run().info.run_id)
-            registered_model = mlflow.register_model(model_uri, "ChurnPredictionModel")
-            
-            # Transition model to staging
-            client = mlflow.tracking.MlflowClient()
-            client.transition_model_version_stage(
-                name="ChurnPredictionModel",
-                version=registered_model.version,
-                stage="Staging"
-            )
 
             # Log metrics to TensorBoard
             with file_writer.as_default():
@@ -75,13 +57,7 @@ def main():
                 tf.summary.scalar('recall', recall, step=1)
                 tf.summary.scalar('f1_score', f1, step=1)
         
-        # Save the model with versioning
-        model_version_dir = os.path.join("models", "version_" + datetime.now().strftime("%Y%m%d-%H%M%S"))
-        os.makedirs(model_version_dir, exist_ok=True)
-        model_path = os.path.join(model_version_dir, "best_model.pkl")
-        ml_model.save_model(best_model, model_path)
-        
-        print(f"Model trained and hyperparameters optimized successfully. Model saved to {model_path}")
+        print("Model trained and hyperparameters optimized successfully.")
 
     if args.evaluate:
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
