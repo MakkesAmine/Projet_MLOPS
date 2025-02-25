@@ -35,11 +35,14 @@ def main():
             tf.summary.scalar('precision', precision, step=1)
             tf.summary.scalar('recall', recall, step=1)
             tf.summary.scalar('f1_score', f1, step=1)
+
+        # Save the model with versioning
+        model_version_dir = "models/version_" + datetime.now().strftime("%Y%m%d-%H%M%S")
+        os.makedirs(model_version_dir, exist_ok=True)
+        model_path = os.path.join(model_version_dir, "best_model.pkl")
+        ml_model.save_model(best_model, model_path)
         
-        # Save the model
-        ml_model.save_model(best_model, "models/best_model.pkl")
-        
-        print("Model trained and hyperparameters optimized successfully.")
+        print(f"Model trained and hyperparameters optimized successfully. Model saved to {model_path}")
 
     if args.evaluate:
         X_train, X_test, y_train, y_test = ml_model.prepare_data(args.train_path, args.test_path)
