@@ -61,6 +61,19 @@ jobs:
         name: model-artifacts
         path: models/best_model.pkl
 
+    - name: Build Docker image
+      run: |
+        docker build -t mlops_app .
+
+    - name: Push Docker image to Docker Hub
+      env:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      run: |
+        docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
+        docker tag mlops_app $DOCKER_HUB_USERNAME/mlops_app:latest
+        docker push $DOCKER_HUB_USERNAME/mlops_app:latest
+
     - name: Start TensorBoard
       run: |
         source venv/bin/activate

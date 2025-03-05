@@ -62,3 +62,12 @@ def retrain(request: RetrainRequest):
         raise HTTPException(status_code=404, detail=f"Fichier de données introuvable: {fnf}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Erreur lors du réentraînement du modèle: {e}")
+
+# Ajouter les configurations pour Elasticsearch et Kibana
+@app.get("/elasticsearch/")
+def get_elasticsearch_info():
+    return {"es_host": os.getenv("ES_HOST", "http://elasticsearch:9200")}
+
+@app.get("/kibana/")
+def get_kibana_info():
+    return {"kibana_host": os.getenv("KIBANA_HOST", "http://kibana:5601")}

@@ -10,9 +10,16 @@ import os
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Configure MLflow
-tracking_uri = "https://a62b-35-245-101-20.ngrok-free.app"
+tracking_uri = "http://mlflow_server:5000"
 mlflow.set_tracking_uri(tracking_uri)
 print(f"Current tracking URI: {mlflow.get_tracking_uri()}")
+
+# Configurer le client Elasticsearch pour l'intégration avec Kibana
+es_host = os.getenv("ES_HOST", "http://elasticsearch:9200")
+kibana_host = os.getenv("KIBANA_HOST", "http://kibana:5601")
+
+print(f"Elasticsearch Host: {es_host}")
+print(f"Kibana Host: {kibana_host}")
 
 # Nom de l'expérience et du modèle
 EXPERIMENT_NAME = "churn_prediction"
