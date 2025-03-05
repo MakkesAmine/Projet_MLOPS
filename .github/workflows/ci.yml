@@ -67,12 +67,12 @@ jobs:
 
     - name: Push Docker image to Docker Hub
       env:
-        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
       run: |
-        docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_ACCESS_TOKEN
-        docker tag mlops_app $DOCKER_HUB_USERNAME/mlops_app:latest
-        docker push $DOCKER_HUB_USERNAME/mlops_app:latest
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker tag mlops_app $DOCKER_USERNAME/mlops_app:latest
+        docker push $DOCKER_USERNAME/mlops_app:latest
 
     - name: Start TensorBoard
       run: |
