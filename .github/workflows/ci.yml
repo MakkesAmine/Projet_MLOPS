@@ -30,11 +30,15 @@ jobs:
         source venv/bin/activate
         python src/main.py --prepare --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
-    - name: Train and Save model
+    - name: Train model
+      run: |
+        source venv/bin/activate
+        python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
+
+    - name: Save model
       run: |
         source venv/bin/activate
         mkdir -p models  # Create the models directory if it doesn't exist
-        python src/main.py --train --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
         python src/main.py --save models/best_model.pkl --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
     - name: Check model directory and file
@@ -53,7 +57,7 @@ jobs:
     - name: Evaluate model
       run: |
         source venv/bin/activate
-        python src/main.py --evaluate --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv --save models/best_model.pkl
+        python src/main.py --evaluate --train_path data/churn-bigml-80.csv --test_path data/churn-bigml-20.csv
 
     - name: Archive model
       uses: actions/upload-artifact@v4

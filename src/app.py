@@ -3,7 +3,9 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 import os
-import model as ml_model
+from . import model as ml_model  # Utilisation du chemin relatif
+from sklearn.ensemble import RandomForestClassifier  # Importer RandomForestClassifier
+from sklearn.metrics import accuracy_score  # Importer accuracy_score
 
 app = FastAPI()
 
