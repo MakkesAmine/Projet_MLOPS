@@ -10,7 +10,7 @@ import os
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Configure MLflow
-tracking_uri = "https://0095-196-176-68-139.ngrok-free.app"
+tracking_uri = "https://a5a6-196-203-207-178.ngrok-free.app"
 mlflow.set_tracking_uri(tracking_uri)
 print(f"Current tracking URI: {mlflow.get_tracking_uri()}")
 
