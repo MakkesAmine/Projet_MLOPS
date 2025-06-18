@@ -1,5 +1,8 @@
 # 📞 Telecom Customer Churn Prediction - MLOps Project
 
+## 📝 Description
+Ce projet a été réalisé dans le cadre de mon parcours académique. Il vise à implémenter un pipeline MLOps complet pour entraîner, évaluer et déployer un modèle de Machine Learning en production.
+
 ## 📜 Project Overview
 **Objective**:  
 Reproduce and extend key research papers on churn prediction in telecom using ML, following CRISP-DM phases. Focus on model interpretability and deployment.
